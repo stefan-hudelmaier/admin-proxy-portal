@@ -1,0 +1,15 @@
+zuul:
+  ignoredPatterns: /__portal__/**,
+  routes:
+    proxy:
+      path: /**
+
+destinations:
+  - name: nginx
+    url: http://127.0.0.1:8081
+  - name: nginx-404
+    url: http://127.0.0.1:8081/something
+
+#logging:
+#  level:
+#    org.springframework.web: DEBUG

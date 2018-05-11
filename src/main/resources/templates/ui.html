@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admin Proxy Portal</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script type="application/javascript">
+	function changeIframe(appName) {
+		console.log(appName);
+		document.getElementById('ContentFrame').src = "/__portal__/setCookie?destinationName=" + appName;
+	}
+</script>
+</head>
+<body>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a class="nav-link active" href="#">Active</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Link</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Link</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link disabled" href="#">Disabled</a>
+		</li>
+	</ul>
+	<ul>
+		<li th:each="destination : ${destinations}">
+			<a href="#" th:onclick="'changeIframe(\''+ ${destination.name} +'\');'" th:text="${destination.name}"><</a>
+		</li>
+	</ul>
+	<iframe id="ContentFrame" src="https://mdn-samples.mozilla.org/snippets/html/iframe-simple-contents.html"
+			title="Content"
+			width="1024"
+			height="768">
+		<p>Your browser does not support iframes.</p>
+	</iframe>
+</body>
+</html>
