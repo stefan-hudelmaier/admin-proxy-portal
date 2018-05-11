@@ -23,4 +23,6 @@ class Destination {
 	@NotBlank
 	lateinit var url: String
 
+	var icon: String = "home"
+
 }
