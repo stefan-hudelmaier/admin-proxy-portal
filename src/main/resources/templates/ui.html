@@ -29,7 +29,7 @@
 					<ul class="nav flex-column">
 
 						<li class="nav-item" th:each="destination : ${destinations}">
-							<a class="nav-link" href="#" th:onclick="'changeIframe(\''+ ${destination.name} +'\');'" >
+							<a class="nav-link" href="#" th:onclick="'changeIframe(\''+ ${destination.name} +'\');'">
 
 								<span th:attr="data-feather=${destination.icon}"></span>
 								<span th:text="${destination.name}"></span>
@@ -40,24 +40,15 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<iframe id="ContentFrame" src="https://mdn-samples.mozilla.org/snippets/html/iframe-simple-contents.html"
-							title="Content"
-							width="1024"
-							height="768">
-						<p>Your browser does not support iframes.</p>
-					</iframe>
-				</div>
+				<iframe class="frame" id="ContentFrame"
+						src=""
+						title="Content">
+					<p>Your browser does not support iframes.</p>
+				</iframe>
 			</main>
 		</div>
 	</div>
-	<!--
-	<ul>
-	</ul>
-	-->
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 			crossorigin="anonymous"></script>

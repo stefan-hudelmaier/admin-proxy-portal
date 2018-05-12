@@ -28,6 +28,12 @@ class AdminProxyPortalApplication {
 
 	@Bean
 	fun destinationService() = DestinationService(applicationSettings(), tokenStore())
+
+	@Bean
+	fun webSecurityConfig() = WebSecurityConfig()
+
+	@Bean
+	fun mvcConfig() = MvcConfig()
 }
 
 fun main(args: Array<String>) {

@@ -12,6 +12,8 @@ destinations:
     url: http://127.0.0.1:8081/something
     icon: film
 
-#logging:
-#  level:
-#    org.springframework.web: DEBUG
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.cloud.netflix: DEBUG
+    com.netflix: DEBUG

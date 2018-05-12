@@ -99,9 +99,23 @@ body {
 	box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
 
+.frame {
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	box-sizing: border-box;
+}
+
 /*
  * Utilities
  */
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+
+
