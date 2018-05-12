@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean
 class AdminProxyPortalApplication {
 
 	@Bean
-	@ConfigurationProperties
+	@ConfigurationProperties(prefix = "admin-proxy-portal")
 	fun applicationSettings(): ApplicationSettings = ApplicationSettings()
 
 	@Bean
@@ -30,7 +30,7 @@ class AdminProxyPortalApplication {
 	fun destinationService() = DestinationService(applicationSettings(), tokenStore())
 
 	@Bean
-	fun webSecurityConfig() = WebSecurityConfig()
+	fun webSecurityConfig() = WebSecurityConfig(applicationSettings())
 
 	@Bean
 	fun mvcConfig() = MvcConfig()

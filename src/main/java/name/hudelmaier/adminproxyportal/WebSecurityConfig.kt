@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder
 
 @Configuration
 @EnableWebSecurity
-class WebSecurityConfig : WebSecurityConfigurerAdapter() {
+class WebSecurityConfig(private val applicationSettings: ApplicationSettings) : WebSecurityConfigurerAdapter() {
 
 	override fun configure(http: HttpSecurity) {
 		// @formatter:off
@@ -37,8 +37,11 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 	@Autowired
 	fun configureGlobal(auth: AuthenticationManagerBuilder) {
 		auth
-				.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-				.withUser("user").password("password").roles("USER")
+				.inMemoryAuthentication()
+				.passwordEncoder(NoOpPasswordEncoder.getInstance())
+				.withUser(applicationSettings.username)
+				.password(applicationSettings.password)
+				.roles("USER")
 	}
 
 }
