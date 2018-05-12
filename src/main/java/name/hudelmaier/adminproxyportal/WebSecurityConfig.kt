@@ -28,8 +28,8 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 					.loginPage("/__portal__/login")
 					.loginProcessingUrl("/__portal__/handleLogin")
 					.defaultSuccessUrl("/__portal__/index.html")
-				.and()
-					.logout()
+					.and()
+				.logout()
 					.logoutUrl("/__portal__/logout")
 		// @formatter:on
 	}
