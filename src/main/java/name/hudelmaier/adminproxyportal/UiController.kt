@@ -10,6 +10,7 @@ import java.time.Duration
 import java.time.temporal.ChronoUnit
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletResponse
+import javax.servlet.http.HttpSession
 
 @Controller
 class UiController(private val destinationService: DestinationService) {
@@ -20,11 +21,13 @@ class UiController(private val destinationService: DestinationService) {
 		return "ui"
 	}
 
+	// TODO: Rename to setDestination
 	@GetMapping(path = ["/__portal__/setCookie"])
-	fun handleSetCookie(@RequestParam destinationName: String, response: HttpServletResponse): ResponseEntity<Void> {
+	fun handleSetCookie(@RequestParam destinationName: String, session: HttpSession, response: HttpServletResponse): ResponseEntity<Void> {
 		val destination = destinationService.getByName(destinationName) ?: throw RuntimeException("Invalid destination")
-		val token = destinationService.getTokenForDestination(destination)
-		response.addCookie(createCookie(token))
+		//val token = destinationService.getTokenForDestination(destination)
+		//response.addCookie(createCookie(token))
+		session.setAttribute("DESTINATION_URL", destination.url)
 		return ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT).header("Location", "http://127.0.0.1:8080").build()
 	}
 

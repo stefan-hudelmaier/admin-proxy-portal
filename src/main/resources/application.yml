@@ -16,9 +16,12 @@ admin-proxy-portal:
     - name: nginx-404
       url: http://127.0.0.1:8081/something
       icon: film
+    - name: grafana
+      url: http://127.0.0.1:8082
+      icon: film
 
 logging:
   level:
-    org.springframework.security: WARN
+    org.springframework.security: DEBUG
     org.springframework.cloud.netflix: WARN
     com.netflix: WARN

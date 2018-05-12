@@ -6,20 +6,16 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.net.URL
 
-class ProxyFilter(private val tokenStore: TokenStore) : ZuulFilter() {
+class ProxyFilter : ZuulFilter() {
 
 	private val logger: Logger = LoggerFactory.getLogger(ProxyFilter::class.java)
 
 	override fun run() {
 		val context = RequestContext.getCurrentContext()
-		val token = context.request.cookies.find { it.name == "adminProxyPortalToken" }?.let { it.value }
-				?: throw RuntimeException("No Cookie")
+		val destinationUrl: String = context.request.session.getAttribute("DESTINATION_URL") as String? ?: throw RuntimeException("No destination URL set")
+		logger.info("Forwarding to $destinationUrl")
 
-		val destination: String = tokenStore.getDestination(token) ?: throw RuntimeException("Invalid token $token")
-
-		logger.info(">>>>>>>> $token $destination")
-
-		context.routeHost = URL(destination)
+		context.routeHost = URL(destinationUrl)
 
 		context.addZuulResponseHeader("Cache-Control", "no-cache, no-store, must-revalidate")
 		context.addZuulResponseHeader("Pragma", "no-cache")

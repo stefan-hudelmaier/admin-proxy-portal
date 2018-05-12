@@ -29,7 +29,6 @@
 
 						<li class="nav-item" th:each="destination : ${destinations}">
 							<a class="nav-link" href="#" th:onclick="'changeIframe(\''+ ${destination.name} +'\');'">
-
 								<span th:attr="data-feather=${destination.icon}"></span>
 								<span th:text="${destination.name}"></span>
 							</a>

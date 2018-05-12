@@ -15,6 +15,7 @@ class WebSecurityConfig(private val applicationSettings: ApplicationSettings) : 
 	override fun configure(http: HttpSecurity) {
 		// @formatter:off
 		http
+				.csrf().disable()
 				.headers()
 					.frameOptions().disable()
 					.and()

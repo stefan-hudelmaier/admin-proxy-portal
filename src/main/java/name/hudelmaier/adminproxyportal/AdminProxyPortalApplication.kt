@@ -21,13 +21,10 @@ class AdminProxyPortalApplication {
 	fun uiController() = UiController(destinationService())
 
 	@Bean
-	fun proxyFilter(): ZuulFilter = ProxyFilter(tokenStore())
+	fun proxyFilter(): ZuulFilter = ProxyFilter()
 
 	@Bean
-	fun tokenStore() = TokenStore()
-
-	@Bean
-	fun destinationService() = DestinationService(applicationSettings(), tokenStore())
+	fun destinationService() = DestinationService(applicationSettings())
 
 	@Bean
 	fun webSecurityConfig() = WebSecurityConfig(applicationSettings())
