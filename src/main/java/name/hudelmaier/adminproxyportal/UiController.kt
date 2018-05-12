@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse
 @Controller
 class UiController(private val destinationService: DestinationService) {
 
-	//@GetMapping(path = ["/__portal__/login"])
-	//fun login() = "login"
-
 	@GetMapping(path = ["/__portal__/index.html"])
 	fun home(model: Model): String {
 		model.addAttribute("destinations", destinationService.getAll())

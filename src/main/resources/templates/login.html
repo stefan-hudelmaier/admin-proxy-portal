@@ -1,20 +1,76 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<title>Spring Security Example </title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<link href="ui.css" rel="stylesheet">
+
+<title>Admin Proxy Portal</title>
 </head>
 <body>
-	<div th:if="${param.error}">
-		Invalid username and password.
+
+	<div class="container">
+		<div class="row py-4 justify-content-center">
+			<div class="col-4">
+				<div class="card">
+					<article class="card-body">
+						<h4 class="card-title text-center mb-4 mt-1">Login</h4>
+						<hr>
+						<div th:if="${param.error}">
+							<p class="text-danger text-center">Invalid username and password</p>
+						</div>
+						<div th:if="${param.logout}">
+							<p class="text-success text-center">You have been logged out</p>
+						</div>
+						<form th:action="@{handleLogin}" method="post">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> <span data-feather="user"></span> </span>
+									</div>
+									<input name="username" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> <span data-feather="unlock"></span> </span>
+									</div>
+									<input name="password" class="form-control" type="password">
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-outline-secondary btn-block"> Login</button>
+							</div>
+						</form>
+					</article>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div th:if="${param.logout}">
-		You have been logged out.
-	</div>
-	<form th:action="@{handleLogin}" method="post">
-		<div><label> User Name : <input type="text" name="username"/> </label></div>
-		<div><label> Password: <input type="password" name="password"/> </label></div>
-		<div><input type="submit" value="Sign In"/></div>
-	</form>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+			integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+			crossorigin="anonymous"></script>
+
+	<!-- Icons -->
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	<script>
+		feather.replace()
+	</script>
 </body>
 </html>
