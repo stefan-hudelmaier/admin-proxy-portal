@@ -15,9 +15,6 @@ admin-proxy-portal:
     - name: nginx
       url: http://127.0.0.1:8081
       icon: home
-    - name: nginx-404
-      url: http://127.0.0.1:8081/something
-      icon: film
     - name: grafana
       url: http://127.0.0.1:8082
       icon: film
