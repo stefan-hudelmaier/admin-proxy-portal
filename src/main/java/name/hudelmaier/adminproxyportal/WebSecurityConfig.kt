@@ -31,16 +31,20 @@ class WebSecurityConfig(private val applicationSettings: ApplicationSettings) : 
 					.antMatchers("/__portal__/*.css").permitAll()
 					.antMatchers("/__portal__/login").permitAll()
 					.antMatchers("/__portal__/handleLogin").permitAll()
-					.antMatchers("/**").authenticated()
+					.antMatchers("/**").hasRole("USER")
 					.and()
 				.oauth2Login()
+					.loginPage("/__portal__/login")
 					.authorizationEndpoint()
 						.baseUri("/__portal__/oauth2/authorization")
 						.and()
 					.redirectionEndpoint()
 						.baseUri("/__portal__/login/oauth2/client/*")
 						.and()
-					.defaultSuccessUrl("/__portal__/index.html")
+					.defaultSuccessUrl("/__portal__/index.html", true)
+					.and()
+				.logout()
+					.logoutUrl("/__portal__/logout")
 
 		// @formatter:on
 
@@ -67,10 +71,6 @@ class WebSecurityConfig(private val applicationSettings: ApplicationSettings) : 
 					.and()
 				.logout()
 					.logoutUrl("/__portal__/logout")
-					.and()
-				.oauth2Login()
-					.redirectionEndpoint()
-						.baseUri("/__portal__/login/oauth2/client/google")
 		// @formatter:on
 
 	}
