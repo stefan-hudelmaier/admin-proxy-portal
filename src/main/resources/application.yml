@@ -8,6 +8,25 @@ zuul:
 
 server.servlet.session.cookie.name: ADMINPROXYPORTALSESSIONID
 
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
+            client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
+            redirect-uri-template: "{baseUrl}/__portal__/login/oauth2/client/{registrationId}"
+        #clientId: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
+        #clientSecret: 1G94WkaJLSzN-fnZ5I_GW7_7
+        #accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+        #userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+        #tokenName: oauth_token
+        #authenticationScheme: query
+        #clientAuthenticationScheme: form
+      resource:
+        userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+
 admin-proxy-portal:
   username: user
   password: pw
