@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServletResponse
 import javax.servlet.http.HttpSession
 
 @Controller
-class UiController(private val destinationService: DestinationService) {
+class UiController(private val destinationService: DestinationService, private val applicationSettings: ApplicationSettings) {
 
 	@GetMapping(path = ["/__portal__/index.html"])
 	fun home(model: Model): String {
 		model.addAttribute("destinations", destinationService.getAll())
 		return "ui"
+	}
+
+	@GetMapping(path = ["/__portal__/login"])
+	fun login(model: Model): String {
+		model.addAttribute("oauthEnabled", applicationSettings.oauth != null)
+		return "login"
 	}
 
 	// TODO: Rename to setDestination

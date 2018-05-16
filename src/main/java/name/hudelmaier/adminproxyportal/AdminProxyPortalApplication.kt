@@ -7,12 +7,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 import org.springframework.context.annotation.Bean
-import org.springframework.security.web.AuthenticationEntryPoint
 
 
-// TODO: OAuth2: Configure allowed email
 // TODO: OAuth2: Improve styling of Login with oauth button
-// TODO: Make it possible to configure either user/pw or OAuth for login
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @EnableZuulProxy
@@ -23,7 +20,7 @@ class AdminProxyPortalApplication() {
 	fun applicationSettings(): ApplicationSettings = ApplicationSettings()
 
 	@Bean
-	fun uiController() = UiController(destinationService())
+	fun uiController() = UiController(destinationService(), applicationSettings())
 
 	@Bean
 	fun proxyFilter(): ZuulFilter = ProxyFilter()

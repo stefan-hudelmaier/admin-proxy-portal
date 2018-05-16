@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.password.NoOpPasswordEncoder
-import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter
+import org.springframework.security.web.access.ExceptionTranslationFilter
 
 @Configuration
 @EnableWebSecurity
@@ -48,14 +48,15 @@ class WebSecurityConfig(private val applicationSettings: ApplicationSettings) : 
 
 			// @formatter:off
 			http
-					.addFilterAt(emailSecurityFilter(), OAuth2LoginAuthenticationFilter::class.java)
+					//.addFilterAfter(emailSecurityFilter(), OAuth2LoginAuthenticationFilter::class.java)
+					.addFilterAfter(emailSecurityFilter(), ExceptionTranslationFilter::class.java)
 					.oauth2Login()
 						.loginPage("/__portal__/login")
 						.authorizationEndpoint()
 							.baseUri("/__portal__/oauth2/authorization")
 							.and()
 						.redirectionEndpoint()
-							.baseUri("/__portal__/login/oauth2/client/*")
+							.baseUri("/__portal__/login/oauth2")
 							.and()
 						.defaultSuccessUrl("/__portal__/index.html", true)
 			// @formatter:on

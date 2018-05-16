@@ -13,10 +13,10 @@ admin-proxy-portal:
       password: pw
   valid-emails-for-oauth:
     - hudelmaier@gmail.com
-  #oauth:
-  #  client-id: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
-  #  client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
-  #  provider: google
+  oauth:
+    client-id: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
+    client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
+    provider: google
 
 
 zuul:
@@ -39,7 +39,7 @@ spring:
             #client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
             client-id: ${admin-proxy-portal.oauth.client-id:null}
             client-secret: ${admin-proxy-portal.oauth.client-secret:null}
-            redirect-uri-template: "{baseUrl}/__portal__/login/oauth2/client/{registrationId}"
+            redirect-uri-template: "{baseUrl}/__portal__/login/oauth2"
             provider: ${admin-proxy-portal.oauth.provider:google}
 
         #clientId: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com

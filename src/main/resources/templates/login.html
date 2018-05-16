@@ -49,7 +49,9 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-outline-secondary btn-block"> Login</button>
 							</div>
-							<a class="btn" href="oauth2/authorization/google">Login using OAuth2</a>
+							<div th:if="${oauthEnabled}">
+								<a class="btn" href="oauth2/authorization/oauth-client">Login using OAuth2</a>
+							</div>
 						</form>
 					</article>
 				</div>
