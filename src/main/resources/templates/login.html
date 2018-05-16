@@ -47,10 +47,11 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-outline-secondary btn-block"> Login</button>
+								<button type="submit" class="btn btn-outline-secondary btn-block">Login with Username/Password</button>
 							</div>
 							<div th:if="${oauthEnabled}">
-								<a class="btn" href="oauth2/authorization/oauth-client">Login using OAuth2</a>
+								<hr />
+								<a class="btn btn-outline-secondary btn-block" href="oauth2/authorization/oauth-client">Login with <span th:text="${oauthProvider}"></span></a>
 							</div>
 						</form>
 					</article>

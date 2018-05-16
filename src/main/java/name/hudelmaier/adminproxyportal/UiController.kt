@@ -24,6 +24,7 @@ class UiController(private val destinationService: DestinationService, private v
 	@GetMapping(path = ["/__portal__/login"])
 	fun login(model: Model): String {
 		model.addAttribute("oauthEnabled", applicationSettings.oauth != null)
+		model.addAttribute("oauthProvider", applicationSettings.oauth?.provider?.capitalize())
 		return "login"
 	}
 
