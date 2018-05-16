@@ -1,6 +1,4 @@
 admin-proxy-portal:
-  username: user
-  password: pw
   destinations:
     - name: Spring Boot Admin
       url: http://127.0.0.1:8081
@@ -24,7 +22,6 @@ admin-proxy-portal:
     client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
     provider: google
 
-
 zuul:
   ignoredPatterns: /__portal__/**,
   routes:
@@ -41,22 +38,10 @@ spring:
       client:
         registration:
           oauth-client:
-            #client-id: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
-            #client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
             client-id: ${admin-proxy-portal.oauth.client-id:null}
             client-secret: ${admin-proxy-portal.oauth.client-secret:null}
             redirect-uri-template: "{baseUrl}/__portal__/login/oauth2"
             provider: ${admin-proxy-portal.oauth.provider:google}
-
-        #clientId: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
-        #clientSecret: 1G94WkaJLSzN-fnZ5I_GW7_7
-        #accessTokenUri: https://www.googleapis.com/oauth2/v4/token
-        #userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
-        #tokenName: oauth_token
-        #authenticationScheme: query
-        #clientAuthenticationScheme: form
-      #resource:
-      #  userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
 
 logging:
   level:

@@ -36,6 +36,45 @@ Admin Proxy Portal can be launched via Docker:
 docker run --rm ...
 ....
 
+Here is an example of the application.yml file:
+
+[source,yaml]
+....
+
+admin-proxy-portal:
+  destinations:
+    - name: Spring Boot Admin
+      url: http://10.0.0.1:8080
+      icon: aperture
+    - name: Prometheus
+      url: http://10.0.0.2:8080
+      icon: anchor
+    - name: Grafana
+      url: http://10.0.0.3:8080
+      icon: monitor
+    - name: Kibana
+      url: http://10.0.0.4:8080
+      icon: message-circle
+  users:
+    - username: admin
+      password: reallysecurepassword
+  valid-emails-for-oauth:
+    - john.doe@example.com
+    - jane.doe@example.com
+  oauth:
+    client-id: xxxxx.apps.googleusercontent.com
+    client-secret: xxxxxx-yyyyyy
+    provider: google
+....
+
+* Valid values for the `icon` property are those from https://feathericons.com/[Feather Icons]
+
+* If the `oauth` section is omitted, OAuth2 Login is disabled.
+
+* Valid values for the `provider` property are: `google`, `github`, `facebook`, and `okta`.
+
+* When setting up a OAuth2 application with one of these providers, configure the following redirect URL: `https://admin-proxy-portal.example.com/\\__portal__/login/oauth2`
+
 == Screenshots
 
 === Login Page
