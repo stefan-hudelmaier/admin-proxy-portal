@@ -2,12 +2,18 @@ admin-proxy-portal:
   username: user
   password: pw
   destinations:
-    - name: nginx
+    - name: Spring Boot Admin
       url: http://127.0.0.1:8081
-      icon: home
-    - name: grafana
+      icon: aperture
+    - name: Prometheus
       url: http://127.0.0.1:8082
-      icon: film
+      icon: anchor
+    - name: Grafana
+      url: http://127.0.0.1:8082
+      icon: monitor
+    - name: Kibana
+      url: http://127.0.0.1:8082
+      icon: message-circle
   users:
     - username: user
       password: pw

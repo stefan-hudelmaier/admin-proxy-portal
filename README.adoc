@@ -36,4 +36,10 @@ Admin Proxy Portal can be launched via Docker:
 docker run --rm ...
 ....
 
+== Screenshots
 
+[caption="Login Page"]
+image::docs/login.png[Login Page,500,align="center"]
+
+[caption="Main View"]
+image::docs/grafana.png[Main View,500,align="center"]
