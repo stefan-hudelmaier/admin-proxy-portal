@@ -38,8 +38,12 @@ docker run --rm ...
 
 == Screenshots
 
+=== Login Page
+
 [caption="Login Page"]
 image::docs/login.png[width=800]
+
+=== Main View
 
 [caption="Main View"]
 image::docs/grafana.png[width=800]
