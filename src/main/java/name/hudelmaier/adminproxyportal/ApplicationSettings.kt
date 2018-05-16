@@ -18,6 +18,13 @@ class ApplicationSettings {
 	@NotBlank
 	lateinit var password: String
 
+	var validEmailsForOauth: List<String> = listOf()
+
+	@Valid
+	var users: List<User> = listOf()
+
+	@Valid
+	var oauth: OauthSettings? = null
 }
 
 @Validated
@@ -30,5 +37,28 @@ class Destination {
 	lateinit var url: String
 
 	var icon: String = "home"
+}
+
+@Validated
+class User {
+
+	@NotBlank
+	lateinit var username: String
+
+	@NotBlank
+	lateinit var password: String
+}
+
+@Validated
+class OauthSettings {
+
+	@NotBlank
+	lateinit var clientId: String
+
+	@NotBlank
+	lateinit var clientSecret: String
+
+	@NotBlank
+	lateinit var provider: String
 
 }
