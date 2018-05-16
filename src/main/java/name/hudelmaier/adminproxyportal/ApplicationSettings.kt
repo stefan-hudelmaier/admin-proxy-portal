@@ -12,12 +12,6 @@ class ApplicationSettings {
 	@NotEmpty
 	var destinations: List<Destination> = listOf()
 
-	@NotBlank
-	lateinit var username: String
-
-	@NotBlank
-	lateinit var password: String
-
 	var validEmailsForOauth: List<String> = listOf()
 
 	@Valid
