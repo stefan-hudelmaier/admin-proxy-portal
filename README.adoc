@@ -28,12 +28,15 @@ between the backend services.
 * Only use Admin Proxy Portal if you control and trust all backend
   services, as Cookies from one service are also forwarded to the others.
 
+* Using a context path (e.g. `https://example.com/admin-proxy-portal`) is not supported, it must be run
+  with its own IP address / DNS name.
+
 == Running and Configuration
 
 Admin Proxy Portal can be launched via Docker:
 
 ....
-docker run --rm ...
+docker run --rm ... (TODO)
 ....
 
 Here is an example of the application.yml file:
@@ -73,7 +76,8 @@ admin-proxy-portal:
 
 * Valid values for the `provider` property are: `google`, `github`, `facebook`, and `okta`.
 
-* When setting up a OAuth2 application with one of these providers, configure the following redirect URL: `https://admin-proxy-portal.example.com/\\__portal__/login/oauth2`
+* When setting up a OAuth2 application with one of these providers, configure the following redirect URL: `https://admin-proxy-portal.example.com/\\__portal__/login/oauth2` (assuming that the application
+ runs under the hostname `admin-proxy-portal.example.com`)
 
 == Screenshots
 
