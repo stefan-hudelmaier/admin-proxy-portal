@@ -13,6 +13,9 @@ cache:
   paths:
     - .m2/repository
 
+services:
+  - docker:dind
+
 # This will only validate and compile stuff and run e.g. maven-enforcer-plugin.
 # Because some enforcer rules might check dependency convergence and class duplications
 # we use `test-compile` here instead of `validate`, so the correct classpath is picked up.
@@ -28,6 +31,8 @@ deploy:jdk8:
   # Use stage test here, so the pages job may later pickup the created site.
   stage: build
   image: maven:3.3.9-jdk-8
+  environment:
+    DOCKER_HOST: docker
   script:
     - 'mvn -Ddocker.username=gitlab-ci-token -Ddocker.password=$CI_BUILD_TOKEN $MAVEN_CLI_OPTS deploy'
 
