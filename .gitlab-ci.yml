@@ -6,6 +6,7 @@ variables:
   # when running from the command line.
   # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+  DOCKER_HOST: docker
 
 # Cache downloaded dependencies and plugins between builds.
 # To keep cache across branches add 'key: "$CI_JOB_NAME"'
@@ -28,13 +29,10 @@ validate:
     - master
 
 deploy:jdk8:
-  # Use stage test here, so the pages job may later pickup the created site.
   stage: build
   image: maven:3.3.9-jdk-8
-  environment:
-    DOCKER_HOST: docker
   script:
+    - 
     - 'mvn -Ddocker.username=gitlab-ci-token -Ddocker.password=$CI_BUILD_TOKEN $MAVEN_CLI_OPTS deploy'
-
   only:
     - master
