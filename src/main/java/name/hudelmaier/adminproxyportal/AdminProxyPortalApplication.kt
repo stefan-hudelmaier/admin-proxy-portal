@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean
 
 
 // TODO: OAuth2: Enforce that Email is present when OAuth Token present
+// TODO: Make it possible to configure a logo for login
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @EnableZuulProxy

@@ -1,0 +1,24 @@
+admin-proxy-portal:
+  destinations:
+    - name: Spring Boot Admin
+      url: http://127.0.0.1:8081
+      icon: aperture
+    - name: Prometheus
+      url: http://127.0.0.1:8082
+      icon: anchor
+    - name: Grafana
+      url: http://127.0.0.1:8082
+      icon: monitor
+    - name: Kibana
+      url: http://127.0.0.1:8082
+      icon: message-circle
+  users:
+    - username: user
+      password: pw
+  valid-emails-for-oauth:
+    - hudelmaier@gmail.com
+  oauth:
+    client-id: 884459476574-vnadbfhn7h3621k0p1d1mo4hahee0mst.apps.googleusercontent.com
+    client-secret: 1G94WkaJLSzN-fnZ5I_GW7_7
+    provider: google
+
