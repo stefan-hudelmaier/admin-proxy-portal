@@ -40,13 +40,15 @@ Admin Proxy Portal can be launched via Docker:
 In foreground:
 
 ....
-docker run --rm -ti -v $(pwd)/application.yml:/application.yml -p 8080:8080 registry.gitlab.com/hudelmaier/admin-proxy-portal:latest
+docker run --rm -ti -v $(pwd)/application.yml:/application.yml \
+    -p 8080:8080 registry.gitlab.com/hudelmaier/admin-proxy-portal:latest
 ....
 
 In background:
 
 ....
-docker run -v $(pwd)/application.yml:/application.yml -p 8080:8080 --name admin-proxy-portal registry.gitlab.com/hudelmaier/admin-proxy-portal:latest
+docker run -v $(pwd)/application.yml:/application.yml -p 8080:8080 \
+    --name admin-proxy-portal registry.gitlab.com/hudelmaier/admin-proxy-portal:latest
 ....
 
 Here is an example of the application.yml file:
