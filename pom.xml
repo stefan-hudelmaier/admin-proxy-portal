@@ -193,6 +193,58 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.20.1</version>
+				<configuration>
+					<images>
+						<image>
+							<name>registry.gitlab.com/hudelmaier/%a:%l</name>
+							<build>
+								<from>java:8-jre-alpine</from>
+								<assembly>
+									<targetDir>/</targetDir>
+									<inline>
+										<files>
+											<file>
+												<source>
+													${project.build.directory}/${project.build.finalName}.jar
+												</source>
+												<destName>spring-boot-admin.jar</destName>
+											</file>
+										</files>
+									</inline>
+								</assembly>
+								<env>
+								</env>
+								<cmd>
+									<shell>
+										java -jar spring-boot-admin.jar
+									</shell>
+								</cmd>
+								<workdir>/</workdir>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>docker-build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>docker-push</id>
+						<phase>install</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

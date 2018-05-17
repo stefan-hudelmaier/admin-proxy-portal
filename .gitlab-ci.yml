@@ -29,6 +29,8 @@ deploy:jdk8:
   stage: build
   image: maven:3.3.9-jdk-8
   script:
-    - 'mvn $MAVEN_CLI_OPTS install'
+    - 'docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com'
+    - 'mvn $MAVEN_CLI_OPTS deploy'
+
   only:
     - master
