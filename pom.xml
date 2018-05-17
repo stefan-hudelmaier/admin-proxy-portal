@@ -202,7 +202,7 @@
 						<image>
 							<name>registry.gitlab.com/hudelmaier/%a:%l</name>
 							<build>
-								<from>java:8-jre-alpine</from>
+								<from>docker.io/java:8-jre-alpine</from>
 								<assembly>
 									<targetDir>/</targetDir>
 									<inline>
