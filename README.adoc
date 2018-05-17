@@ -1,5 +1,7 @@
 = Admin Proxy Portal
 
+image::https://gitlab.com/hudelmaier/admin-proxy-portal/badges/master/build.svg[]
+
 == General
 
 This project can be used as a reverse proxy before various
