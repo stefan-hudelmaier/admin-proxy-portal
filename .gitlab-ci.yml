@@ -32,6 +32,6 @@ deploy:jdk8:
   stage: build
   image: maven:3.3.9-jdk-8
   script:
-    - 'mvn -Ddocker.registry=registry.gitlab.com -Ddocker.username=gitlab-ci-token -Ddocker.password=$CI_BUILD_TOKEN $MAVEN_CLI_OPTS deploy'
+    - 'mvn -Ddocker.push.username=gitlab-ci-token -Ddocker.push.password=$CI_BUILD_TOKEN $MAVEN_CLI_OPTS deploy'
   only:
     - master
