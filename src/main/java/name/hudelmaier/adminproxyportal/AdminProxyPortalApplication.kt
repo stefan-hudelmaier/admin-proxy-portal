@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 import org.springframework.context.annotation.Bean
 
 
-// TODO: OAuth2: Improve styling of Login with oauth button
+// TODO: OAuth2: Enforce that Email is present when OAuth Token present
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @EnableZuulProxy
