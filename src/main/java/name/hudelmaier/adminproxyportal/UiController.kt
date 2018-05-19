@@ -32,10 +32,8 @@ class UiController(private val destinationService: DestinationService, private v
 	@GetMapping(path = ["/__portal__/setCookie"])
 	fun handleSetCookie(@RequestParam destinationName: String, session: HttpSession, response: HttpServletResponse): ResponseEntity<Void> {
 		val destination = destinationService.getByName(destinationName) ?: throw RuntimeException("Invalid destination")
-		//val token = destinationService.getTokenForDestination(destination)
-		//response.addCookie(createCookie(token))
 		session.setAttribute("DESTINATION_URL", destination.url)
-		return ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT).header("Location", "http://127.0.0.1:8080").build()
+		return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/").build()
 	}
 
 	private fun createCookie(token: String): Cookie {

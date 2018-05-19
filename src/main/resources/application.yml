@@ -8,6 +8,8 @@ zuul:
 
 server.servlet.session.cookie.name: ADMINPROXYPORTALSESSIONID
 
+management.endpoints.web.base-path: /__portal__/health
+
 spring:
   security:
     oauth2:
